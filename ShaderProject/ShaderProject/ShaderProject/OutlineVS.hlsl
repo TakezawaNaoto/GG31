@@ -26,7 +26,7 @@ VS_OUT main(VS_IN vin)
 	vout.pos = float4(vin.pos, 1.0f);
 
 	// 頂点の方向に向かってモデルの頂点を移動させる
-	vout.pos.xyz += normalize(vin.normal) * 0.001f;
+	vout.pos.xyz += normalize(vin.normal) * 0.01f;
 
 	// ローカル座標 > ワールド座標 > ビュー座標 > プロジェクション座標 と変換をかける
 	vout.pos = mul(vout.pos, world);

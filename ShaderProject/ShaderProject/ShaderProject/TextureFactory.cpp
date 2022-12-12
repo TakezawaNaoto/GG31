@@ -75,7 +75,26 @@ Texture* TextureFactory::CreateFromData(DXGI_FORMAT format, UINT width, UINT hei
 
 	return pTexture;
 }
+Texture* TextureFactory::CreateRenderTarget(DXGI_FORMAT format, UINT width, UINT height)
+{
+	// テクスチャ設定
+	D3D11_TEXTURE2D_DESC desc = MakeTexDesc(format, width, height);
+	desc.BindFlags |= D3D11_BIND_RENDER_TARGET;
 
+	// インスタンス生成
+	RenderTarget* pTexture = new RenderTarget;
+	if (SUCCEEDED(pTexture->CreateResource(desc)))
+	{
+		pTexture->m_width = width;
+		pTexture->m_height = height;
+	}
+	else
+	{
+		delete pTexture;
+		pTexture = nullptr;
+	}
+	return pTexture;
+}
 Texture* TextureFactory::CreateRenderTargetFromScreen()
 {
 	HRESULT hr;

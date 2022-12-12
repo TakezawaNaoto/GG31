@@ -20,6 +20,7 @@ enum PixelShaderKind
 	PS_BUMPMAP,
 	PS_TOON,
 	PS_OUTLINE,
+	PS_SCREEN,
 	PS_KIND_MAX
 };
 
