@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="ソース ファイル">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="ヘッダー ファイル">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="リソース ファイル">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="ソース ファイル\System">
+      <UniqueIdentifier>{4e17ff4f-a004-4e4a-9470-879b9af60429}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\System">
+      <UniqueIdentifier>{76d7d9cf-96c4-4ff5-a5f6-7dfd24ef09cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\App">
+      <UniqueIdentifier>{2c3db676-bf36-4efc-a80a-29f79c26d16f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\App">
+      <UniqueIdentifier>{375453a1-ead7-471e-9fe9-85ec8b5e9c71}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="リソース ファイル\PixelShader">
+      <UniqueIdentifier>{a9755fd2-e8f8-4e2e-854e-68fcfb6a9b68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="リソース ファイル\VertexShader">
+      <UniqueIdentifier>{e4c96e83-672c-4720-aa96-8ee0c9525558}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FBX">
+      <UniqueIdentifier>{12bb8f01-e56e-44dc-bf87-7fa6370f11ed}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Startup.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>ソース ファイル\App</Filter>
+    </ClCompile>
+    <ClCompile Include="DirectX.cpp">
+      <Filter>ソース ファイル\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Shader.cpp">
+      <Filter>ソース ファイル\System</Filter>
+    </ClCompile>
+    <ClCompile Include="DXBuffer.cpp">
+      <Filter>ソース ファイル\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>ソース ファイル\System</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureFactory.cpp">
+      <Filter>ソース ファイル\System</Filter>
+    </ClCompile>
+    <ClCompile Include="ConstantBuffer.cpp">
+      <Filter>ソース ファイル\System</Filter>
+    </ClCompile>
+    <ClCompile Include="FBXParser.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="FBXLoadAnimation.cpp">
+      <Filter>FBX</Filter>
+    </ClCompile>
+    <ClCompile Include="FBXLoadBone.cpp">
+      <Filter>FBX</Filter>
+    </ClCompile>
+    <ClCompile Include="FBXLoader.cpp">
+      <Filter>FBX</Filter>
+    </ClCompile>
+    <ClCompile Include="FBXLoadMaterial.cpp">
+      <Filter>FBX</Filter>
+    </ClCompile>
+    <ClCompile Include="FBXLoadMesh.cpp">
+      <Filter>FBX</Filter>
+    </ClCompile>
+    <ClCompile Include="FBXPlayer.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Geometory.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderTarget.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Defines.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>ヘッダー ファイル\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Shader.h">
+      <Filter>ヘッダー ファイル\System</Filter>
+    </ClInclude>
+    <ClInclude Include="DXBuffer.h">
+      <Filter>ヘッダー ファイル\System</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureFactory.h">
+      <Filter>ヘッダー ファイル\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Main.h">
+      <Filter>ヘッダー ファイル\App</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX.h">
+      <Filter>ヘッダー ファイル\System</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderTarget.h">
+      <Filter>ヘッダー ファイル\System</Filter>
+    </ClInclude>
+    <ClInclude Include="ConstantBuffer.h">
+      <Filter>ヘッダー ファイル\System</Filter>
+    </ClInclude>
+    <ClInclude Include="FBXParser.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="FBXLoadAnimation.h">
+      <Filter>FBX</Filter>
+    </ClInclude>
+    <ClInclude Include="FBXLoader.h">
+      <Filter>FBX</Filter>
+    </ClInclude>
+    <ClInclude Include="FBXLoadBone.h">
+      <Filter>FBX</Filter>
+    </ClInclude>
+    <ClInclude Include="FBXLoadMaterial.h">
+      <Filter>FBX</Filter>
+    </ClInclude>
+    <ClInclude Include="FBXLoadMesh.h">
+      <Filter>FBX</Filter>
+    </ClInclude>
+    <ClInclude Include="FBXPlayer.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometory.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="Shader\SamplePS.hlsl">
+      <Filter>リソース ファイル\PixelShader</Filter>
+    </FxCompile>
+    <FxCompile Include="Shader\SampleVS.hlsl">
+      <Filter>リソース ファイル\VertexShader</Filter>
+    </FxCompile>
+    <FxCompile Include="Shader\LambertPS.hlsl">
+      <Filter>リソース ファイル\PixelShader</Filter>
+    </FxCompile>
+    <FxCompile Include="Shader\AnimationVS.hlsl">
+      <Filter>リソース ファイル\VertexShader</Filter>
+    </FxCompile>
+  </ItemGroup>
+</Project>
