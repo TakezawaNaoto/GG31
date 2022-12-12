@@ -235,5 +235,8 @@
     <FxCompile Include="OutlinePS.hlsl">
       <Filter>リソース ファイル\PixelShader</Filter>
     </FxCompile>
+    <FxCompile Include="ScreenPS.hlsl">
+      <Filter>リソース ファイル\PixelShader</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>

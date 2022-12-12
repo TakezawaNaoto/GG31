@@ -17,6 +17,7 @@ const char* PixelShaderFile[] =
 	"Assets/Shader/BumpmapPS.cso",
 	"Assets/Shader/ToonPS.cso",
 	"Assets/Shader/OutlinePS.cso",
+	"Assets/Shader/ScreenPS.cso",
 };
 
 
