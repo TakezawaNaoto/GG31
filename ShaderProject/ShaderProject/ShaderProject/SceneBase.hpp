@@ -82,5 +82,4 @@ template<class T> T* SceneBase::GetObj(const char* name)
 	return ptr->m_pObj;
 }
 
-
 #endif // __SCENE_BASE_HPP__

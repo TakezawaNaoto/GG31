@@ -6,6 +6,8 @@ const char* VertexShaderFile[] =
 	"Assets/Shader/ObjectVS.cso",
 	"Assets/Shader/BumpVS.cso",
 	"Assets/Shader/OutlineVS.cso",
+	"Assets/Shader/RoomShadowVS.cso",
+	"Assets/Shader/DepthWriteVS.cso",
 };
 const char* PixelShaderFile[] =
 {
@@ -18,6 +20,14 @@ const char* PixelShaderFile[] =
 	"Assets/Shader/ToonPS.cso",
 	"Assets/Shader/OutlinePS.cso",
 	"Assets/Shader/ScreenPS.cso",
+	"Assets/Shader/RoomShadowPS.cso",
+	"Assets/Shader/DepthShadowPS.cso",
+	"Assets/Shader/DepthWritePS.cso",
+	"Assets/Shader/PointLightPS.cso",
+	"Assets/Shader/MultiRenderPS.cso",
+	"Assets/Shader/MultiRenderCheckPS.cso",
+	"Assets/Shader/LightColorPS.cso",
+	"Assets/Shader/DefferedPointLightPS.cso",
 };
 
 
