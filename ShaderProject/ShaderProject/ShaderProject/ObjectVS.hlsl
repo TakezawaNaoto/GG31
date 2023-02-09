@@ -3,7 +3,6 @@ struct VS_IN
 	float3 pos : POSITION0;
 	float3 normal : NORMAL0;
 	float2 uv : TEXCOORD0;
-	float4 wPos : TEXCOORD1;
 };
 struct VS_OUT
 {
@@ -11,6 +10,7 @@ struct VS_OUT
 	float3 normal : NORMAL0;
 	float2 uv : TEXCOORD0;
 	float4 wPos : TEXCOORD1;
+	float4 screenPos : TEXCOORD2;
 };
 cbuffer WVP : register(b0)
 {
@@ -30,6 +30,8 @@ VS_OUT main(VS_IN vin)
 	vout.wPos = vout.pos;	// ピクセルシェーダーにワールド座標を渡すため、一旦コピー
 	vout.pos = mul(vout.pos, view);
 	vout.pos = mul(vout.pos, proj);
+	// スクリーン座標を保存
+	vout.screenPos = vout.pos;
 
 	vout.normal = vin.normal;
 	vout.uv = vin.uv;
