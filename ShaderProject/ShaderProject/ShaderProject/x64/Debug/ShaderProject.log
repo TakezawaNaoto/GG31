@@ -1,0 +1,19 @@
+﻿  compilation object save succeeded; see C:\Users\naoto\OneDrive\デスクトップ\HAL3年\GG31\ShaderProject\ShaderProject\ShaderProject\Assets\Shader\DefferedPointLightPS.cso
+  Main.cpp
+  SceneBump.cpp
+c:\users\naoto\onedrive\デスクトップ\hal3年\gg31\shaderproject\shaderproject\shaderproject\scenebump.cpp(186): warning C4018: '<': signed と unsigned の数値を比較しようとしました。
+  SceneDeffered.cpp
+c:\users\naoto\onedrive\デスクトップ\hal3年\gg31\shaderproject\shaderproject\shaderproject\scenedeffered.cpp(33): warning C4244: '引数': 'float' から 'UINT' への変換です。データが失われる可能性があります。
+c:\users\naoto\onedrive\デスクトップ\hal3年\gg31\shaderproject\shaderproject\shaderproject\scenedeffered.cpp(35): warning C4244: '引数': 'float' から 'UINT' への変換です。データが失われる可能性があります。
+c:\users\naoto\onedrive\デスクトップ\hal3年\gg31\shaderproject\shaderproject\shaderproject\scenedeffered.cpp(37): warning C4244: '引数': 'float' から 'UINT' への変換です。データが失われる可能性があります。
+c:\users\naoto\onedrive\デスクトップ\hal3年\gg31\shaderproject\shaderproject\shaderproject\scenedeffered.cpp(48): warning C4244: '引数': 'float' から 'UINT' への変換です。データが失われる可能性があります。
+c:\users\naoto\onedrive\デスクトップ\hal3年\gg31\shaderproject\shaderproject\shaderproject\scenedeffered.cpp(53): warning C4244: '引数': 'float' から 'UINT' への変換です。データが失われる可能性があります。
+  SceneShading.cpp
+  SceneShadow.cpp
+c:\users\naoto\onedrive\デスクトップ\hal3年\gg31\shaderproject\shaderproject\shaderproject\sceneshadow.cpp(32): warning C4244: '引数': 'float' から 'UINT' への変換です。データが失われる可能性があります。
+  SceneToon.cpp
+c:\users\naoto\onedrive\デスクトップ\hal3年\gg31\shaderproject\shaderproject\shaderproject\scenetoon.cpp(26): warning C4244: '引数': 'float' から 'UINT' への変換です。データが失われる可能性があります。
+  SceneView.cpp
+  ShaderList.cpp
+  コードを生成中...
+  ShaderProject.vcxproj -> C:\Users\naoto\OneDrive\デスクトップ\HAL3年\GG31\ShaderProject\ShaderProject\x64\Debug\ShaderProject.exe

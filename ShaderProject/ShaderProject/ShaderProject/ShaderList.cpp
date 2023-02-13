@@ -28,6 +28,7 @@ const char* PixelShaderFile[] =
 	"Assets/Shader/MultiRenderCheckPS.cso",
 	"Assets/Shader/LightColorPS.cso",
 	"Assets/Shader/DefferedPointLightPS.cso",
+	"Assets/Shader/GradationPS.cso",
 };
 
 
