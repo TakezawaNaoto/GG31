@@ -28,6 +28,7 @@ void SceneDeffered::Init()
 	pModel->SetVertexShader(GetVS(VS_OBJECT));
 	pModel->SetPixelShader(GetPS(PS_LIGHT_COLOR));
 
+	// マルチレンダーターゲットの書き込み先を用意
 	Texture* pCanvasColor = TextureFactory::CreateRenderTarget(
 		DXGI_FORMAT_R8G8B8A8_UNORM, 1280.0f, 720.0f);
 	Texture* pCanvasNormal = TextureFactory::CreateRenderTarget(
@@ -41,6 +42,16 @@ void SceneDeffered::Init()
 	// 複数の描画に対して、奥行きの情報は一つでOK
 	Texture* pCanvasDepth = TextureFactory::CreateDepthStencil(1280, 720, true);
 	RegisterObj<Texture>("CanvasDSV", pCanvasDepth);
+
+	// 点光源のみを書き込むバッファを用意
+	Texture* pCanvasPointLight = TextureFactory::CreateRenderTarget(
+		DXGI_FORMAT_R8G8B8A8_UNORM, 128.0f, 72.0f);	// 画像を小さくしてぼかす
+	RegisterObj<Texture>("CanvasPointLight", pCanvasPointLight);
+
+	// ぼかし用のバッファを用意
+	Texture* pCanvasGradation = TextureFactory::CreateRenderTarget(
+		DXGI_FORMAT_R8G8B8A8_UNORM, 1280.0f, 72.0f);
+	RegisterObj<Texture>("CanvasGradation", pCanvasGradation);
 
 	// --- 定数バッファ作成
 	ConstantBuffer* pInverse =
@@ -93,6 +104,13 @@ void SceneDeffered::Draw()
 	pLight->Write(&lightDir);
 	pLight->BindPS(0);
 
+	// ビューポートの作成
+	D3D11_VIEWPORT vp = {};
+	vp.Width = 1280.0f;
+	vp.Height = 720.0f;
+	vp.MaxDepth = 1.0f;
+	GetContext()->RSSetViewports(1, &vp);
+
 	// マルチレンダーターゲットの設定
 	RenderTarget* pCanvasColor =
 		reinterpret_cast<RenderTarget*>(GetObj<Texture>("CanvasColor"));
@@ -119,8 +137,24 @@ void SceneDeffered::Draw()
 	GetContext()->ClearDepthStencilView(pCanvasDSV->GetView(),
 		D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1.0f, 0);
 
+
+
+	// テクスチャに書き込み
 	GetObj<Model>("UnityModel")->Draw();
 	GetObj<Model>("room")->Draw();
+
+	// 別のテクスチャに書き込み
+	RenderTarget* pCanvasPointLight =
+		reinterpret_cast<RenderTarget*>(GetObj<Texture>("CanvasPointLight"));
+	pView[0] = pCanvasPointLight->GetView();
+	GetContext()->OMSetRenderTargets(1, pView, pCanvasDSV->GetView());
+	GetContext()->ClearRenderTargetView(pView[0], color[0]);
+	vp.Width = 128.0f;
+	vp.Height = 72.0f;
+	vp.MaxDepth = 1.0f;
+	GetContext()->RSSetViewports(1, &vp);
+
+	// 点光源描画
 	ConstantBuffer* pLightColor = GetObj<ConstantBuffer>("LightColor");
 	pLight->BindPS(0);
 	for (int i = 0; i < 30; ++i)
@@ -136,10 +170,35 @@ void SceneDeffered::Draw()
 		GetObj<Model>("lightModel")->Draw();
 	}
 
+	// ぼかし処理を実施
+	RenderTarget* pCanvasGradation =
+		reinterpret_cast<RenderTarget*>(GetObj<Texture>("CanvasGradation"));
+	pView[0] = pCanvasGradation->GetView();
+	GetContext()->OMSetRenderTargets(1, pView, nullptr);
+	GetContext()->ClearRenderTargetView(pView[0], color[0]);
+	
+	// 2D表示の行列を設定
+	DirectX::XMStoreFloat4x4(&mat[0], DirectX::XMMatrixIdentity());
+	DirectX::XMStoreFloat4x4(&mat[1], DirectX::XMMatrixIdentity());
+	DirectX::XMStoreFloat4x4(&mat[1], DirectX::XMMatrixIdentity());
+	DirectX::XMStoreFloat4x4(&mat[2], DirectX::XMMatrixTranspose(
+		DirectX::XMMatrixOrthographicLH(1.6f, 0.9f, -1.0f, 1.0f)));
+	pWVP->Write(mat);
+
+	// レンダーターゲットに収まるサイズでモデルを表示
+	Model* pScreen = GetObj<Model>("Screen");
+	pScreen->SetPixelShader(GetPS(PS_GRADATION));
+	SetTexturePS(pCanvasPointLight->GetResource(), 1);
+
+	// 元の描画に戻す
 	RenderTarget*pRTV = GetObj<RenderTarget>("DefRTV");
 	pView[0] = pRTV->GetView();
 	pCanvasDSV = GetObj<DepthStencil>("DefDSV");
 	GetContext()->OMSetRenderTargets(1, pView, pCanvasDSV->GetView());
+	vp.Width = 1280.0f;
+	vp.Height = 720.0f;
+	vp.MaxDepth = 1.0f;
+	GetContext()->RSSetViewports(1, &vp);
 
 #if 0	// マルチレンダーターゲット書き込み確認
 	
@@ -179,7 +238,7 @@ void SceneDeffered::Draw()
 	DirectX::XMStoreFloat4x4(&mat[1],
 		DirectX::XMMatrixIdentity());
 	DirectX::XMStoreFloat4x4(&mat[2],
-		DirectX::XMMatrixTranspose(DirectX::XMMatrixOrthographicLH(2.0f, 1.0f, -1.0f, 1.0f)));
+		DirectX::XMMatrixTranspose(DirectX::XMMatrixOrthographicLH(1.6f, 0.9f, -1.0f, 1.0f)));
 	pWVP->Write(mat);
 
 	// スクリーンの描画
@@ -187,6 +246,8 @@ void SceneDeffered::Draw()
 	SetTexturePS(pCanvasColor->GetResource(), 1);
 	SetTexturePS(pCanvasNormal->GetResource(), 2);
 	SetTexturePS(pCanvasWorld->GetResource(), 3);
-	GetObj<Model>("Screen")->Draw();
+	SetTexturePS(pCanvasGradation->GetResource(), 4);
+	pScreen->SetPixelShader(GetPS(PS_DEFFEREDPOINTLIGHT));
+	pScreen->Draw();
 #endif
 }

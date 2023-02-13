@@ -30,6 +30,7 @@ SamplerState samp : register(s0);
 Texture2D colorTex : register(t1);
 Texture2D normalTex : register(t2);
 Texture2D worldTex : register(t3);
+Texture2D pointLightTex : register(t4);
 
 float4 main(PS_IN pin) : SV_TARGET
 {
@@ -39,6 +40,7 @@ float4 main(PS_IN pin) : SV_TARGET
 	float4 color = colorTex.Sample(samp, uv);
 	float3 normal = normalTex.Sample(samp, uv).xyz;
 	float depth = worldTex.Sample(samp, uv).x;
+	float4 pointLightColor = pointLightTex.Sample(samp, pin.uv);
 
 	// テクスチャに書き込まれた法線の情報の
 	// 計算で使える形に変換する
@@ -77,5 +79,5 @@ float4 main(PS_IN pin) : SV_TARGET
 		lightColor += lights[i].color * d * attenuation;
 	}
 
-	return color + lightColor;
+	return color + lightColor + pointLightColor;
 }
