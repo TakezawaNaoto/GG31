@@ -1,7 +1,0 @@
-﻿  SceneDeffered.cpp
-c:\users\naoto\onedrive\デスクトップ\hal3年\gg31\shaderproject\shaderproject\shaderproject\scenedeffered.cpp(33): warning C4244: '引数': 'float' から 'UINT' への変換です。データが失われる可能性があります。
-c:\users\naoto\onedrive\デスクトップ\hal3年\gg31\shaderproject\shaderproject\shaderproject\scenedeffered.cpp(35): warning C4244: '引数': 'float' から 'UINT' への変換です。データが失われる可能性があります。
-c:\users\naoto\onedrive\デスクトップ\hal3年\gg31\shaderproject\shaderproject\shaderproject\scenedeffered.cpp(37): warning C4244: '引数': 'float' から 'UINT' への変換です。データが失われる可能性があります。
-c:\users\naoto\onedrive\デスクトップ\hal3年\gg31\shaderproject\shaderproject\shaderproject\scenedeffered.cpp(48): warning C4244: '引数': 'float' から 'UINT' への変換です。データが失われる可能性があります。
-c:\users\naoto\onedrive\デスクトップ\hal3年\gg31\shaderproject\shaderproject\shaderproject\scenedeffered.cpp(53): warning C4244: '引数': 'float' から 'UINT' への変換です。データが失われる可能性があります。
-  ShaderProject.vcxproj -> C:\Users\naoto\OneDrive\デスクトップ\HAL3年\GG31\ShaderProject\ShaderProject\x64\Debug\ShaderProject.exe
